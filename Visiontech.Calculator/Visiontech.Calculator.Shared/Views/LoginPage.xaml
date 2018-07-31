@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<abstraction:LoadingContentPage
+            xmlns:abstraction="clr-namespace:CalcolatoreXamarin.Shared.Views.Abstraction"
+            xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:viewmodels="clr-namespace:CalcolatoreXamarin.Shared.ViewModels"
+            x:Class="CalcolatoreXamarin.Views.LoginPage"
+            x:TypeArguments="viewmodels:LoginModel">
+    <abstraction:LoadingContentPage.LoadingContent>
+        <Frame>
+            <StackLayout>
+                <Label Text="Username" HorizontalOptions="FillAndExpand" />
+                <Entry Text="{Binding Username}" Placeholder="username" HorizontalOptions="FillAndExpand" />
+                <Label Text="Password" HorizontalOptions="FillAndExpand" />
+                <Entry Text="{Binding Password}" Placeholder="password" IsPassword="true" HorizontalOptions="FillAndExpand" />
+                <Button Text="Login" Command="{Binding LoginCommand}" IsEnabled="{Binding CanLogin}" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"/>
+            </StackLayout>
+        </Frame>
+    </abstraction:LoadingContentPage.LoadingContent>
+</abstraction:LoadingContentPage>

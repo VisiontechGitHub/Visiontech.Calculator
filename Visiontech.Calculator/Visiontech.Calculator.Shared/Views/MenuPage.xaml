@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<abstraction:LoadingContentPage
+    xmlns:abstraction="clr-namespace:CalcolatoreXamarin.Shared.Views.Abstraction"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:CalcolatoreXamarin.Shared.ViewModels"
+    x:Class="CalcolatoreXamarin.Views.MenuPage"
+    x:TypeArguments="viewmodels:MenuModel"
+    Title="Calcolatore Manager">
+    <abstraction:LoadingContentPage.LoadingContent>
+        <StackLayout>
+            <ListView ItemsSource="{Binding MenuValues}" SelectedItem="{Binding SelectedAction, Mode=TwoWay}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame BackgroundColor="Transparent" HasShadow="False">
+                                <Label Text="{Binding Item1}"/>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </abstraction:LoadingContentPage.LoadingContent>
+</abstraction:LoadingContentPage>

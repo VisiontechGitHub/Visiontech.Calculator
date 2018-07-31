@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:forms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+              xmlns:i18n="clr-namespace:CalcolatoreXamarin.Shared.Extensions;assembly=Visiontech.Calculator.Shared"
+              x:Class="CalcolatoreXamarin.Shared.Views.AnalizedLensPage"
+              Title="{i18n:Translate AnalizedLens}">
+    <ContentPage Title="{i18n:Translate RightLens}">
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Text="{i18n:Translate 3D}" Clicked="Right_Toolbar_3D_Clicked"/>
+            <ToolbarItem Text="{i18n:Translate CylMap}" Clicked="Right_Toolbar_CylinderMap_Clicked"/>
+            <ToolbarItem Text="{i18n:Translate PowMap}" Clicked="Right_Toolbar_PowerMap_Clicked"/>
+        </ContentPage.ToolbarItems>
+        <forms:SKCanvasView x:Name="leftCanvas" PaintSurface="RightCanvas_PaintSurface"/>
+    </ContentPage>
+    <ContentPage Title="{i18n:Translate LeftLens}">
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Text="{i18n:Translate 3D}" Clicked="Left_Toolbar_3D_Clicked"/>
+            <ToolbarItem Text="{i18n:Translate CylMap}" Clicked="Left_Toolbar_CylinderMap_Clicked"/>
+            <ToolbarItem Text="{i18n:Translate PowMap}" Clicked="Left_Toolbar_PowerMap_Clicked"/>
+        </ContentPage.ToolbarItems>
+        <forms:SKCanvasView x:Name="rightCanvas" PaintSurface="LeftCanvas_PaintSurface"/>
+    </ContentPage>
+</CarouselPage>

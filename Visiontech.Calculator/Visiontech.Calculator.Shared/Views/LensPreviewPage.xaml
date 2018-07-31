@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<abstraction:LoadingContentPage 
+    xmlns:abstraction="clr-namespace:CalcolatoreXamarin.Shared.Views.Abstraction"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:i18n="clr-namespace:CalcolatoreXamarin.Shared.Extensions;assembly=Visiontech.Calculator.Shared"
+    xmlns:viewmodels="clr-namespace:CalcolatoreXamarin.Shared.ViewModels"
+    x:Class="CalcolatoreXamarin.Views.LensPreviewPage"
+    x:TypeArguments="viewmodels:LensPreviewModel"
+    Title="{i18n:Translate LensPreview}">
+    <abstraction:LoadingContentPage.LoadingContent>
+        <Frame>
+            <StackLayout>
+                <ScrollView VerticalOptions="FillAndExpand">
+                    <StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand">
+                            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <AbsoluteLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Picker ItemsSource="{Binding LensTypes}" SelectedItem="{Binding Design}" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1, 0, 0.5, 1" Title="{i18n:Translate Design}" ItemDisplayBinding="{Binding Path=.}"/>
+                                    <Picker ItemsSource="{Binding RefractionIndexes}" SelectedItem="{Binding RefractionIndex}" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 0.5, 1" Title="{i18n:Translate RefractionIndex}" ItemDisplayBinding="{Binding Path=., StringFormat='{0:N3}'}"/>
+                                </AbsoluteLayout>
+                            </Frame>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" IsVisible="{Binding FarNearLayoutIsVisible}">
+                                <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{i18n:Translate FarZone}"/>
+                                                        <Span Text=" : "/>
+                                                        <Span Text="{Binding Mode=OneWay, Source={x:Reference farZone}, Path=Value, StringFormat='{0:N0}'}"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Slider x:Name="farZone" Maximum="101" Minimum="40" Value="{Binding FarZone, Mode=TwoWay}"/>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{i18n:Translate NearZone}"/>
+                                                        <Span Text=" : "/>
+                                                        <Span Text="{Binding Mode=OneWay, Source={x:Reference nearZone}, Path=Value, StringFormat='{0:N0}'}"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Slider x:Name="nearZone" Maximum="35" Minimum="14" Value="{Binding NearZone, Mode=TwoWay}"/>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding ChannelLayoutIsVisible}">
+                                <StackLayout VerticalOptions="CenterAndExpand">
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="{i18n:Translate Channel}"/>
+                                                    <Span Text=" : "/>
+                                                    <Span Text="{Binding Mode=OneWay, Source={x:Reference channel}, Path=Value, StringFormat='{0:N0}'}"/>
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Slider x:Name="channel" Maximum="19" Minimum="5" Value="{Binding Channel, Mode=TwoWay}"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Label Text="{i18n:Translate LeftLens}" Style="{DynamicResource SubtitleStyle}"/>
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{i18n:Translate Sphere}"/>
+                                                        <Span Text=" : "/>
+                                                        <Span Text="{Binding Mode=OneWay, Source={x:Reference leftSphere}, Path=Value, StringFormat='{0:N2}'}"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Slider x:Name="leftSphere" Maximum="5" Minimum="-5" Value="{Binding LeftSphere, Mode=TwoWay}"/>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{i18n:Translate Cylinder}"/>
+                                                        <Span Text=" : "/>
+                                                        <Span Text="{Binding Mode=OneWay, Source={x:Reference leftCylinder}, Path=Value, StringFormat='{0:N2}'}"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Slider x:Name="leftCylinder" Maximum="5" Minimum="-5" Value="{Binding Mode=TwoWay, Path=LeftCylinder}"/>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{i18n:Translate Axis}"/>
+                                                        <Span Text=" : "/>
+                                                        <Span Text="{Binding Mode=OneWay, Source={x:Reference leftAxis}, Path=Value, StringFormat='{0:N0}'}"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Slider x:Name="leftAxis" Maximum="180" Minimum="0" Value="{Binding LeftCylinderAxis, Mode=TwoWay}"/>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{i18n:Translate Addiction}"/>
+                                                        <Span Text=" : "/>
+                                                        <Span Text="{Binding Mode=OneWay, Source={x:Reference leftAddiction}, Path=Value, StringFormat='{0:N2}'}"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Slider x:Name="leftAddiction" Maximum="4.0" Minimum="0.5" Value="{Binding LeftAddiction, Mode=TwoWay}"/>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{i18n:Translate BaseCurve}"/>
+                                                        <Span Text=" : "/>
+                                                        <Span Text="{Binding Mode=OneWay, Source={x:Reference leftBaseCurve}, Path=Value, StringFormat='{0:N1}'}"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Slider x:Name="leftBaseCurve" Maximum="12.0" Minimum="0.5" Value="{Binding LeftToolRealBase, Mode=TwoWay}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Label Text="{i18n:Translate RightLens}" Style="{DynamicResource SubtitleStyle}"/>
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{i18n:Translate Sphere}"/>
+                                                        <Span Text=" : "/>
+                                                        <Span Text="{Binding Mode=OneWay, Source={x:Reference rightSphere}, Path=Value, StringFormat='{0:N2}'}"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Slider x:Name="rightSphere" Maximum="5" Minimum="-5" Value="{Binding RightSphere, Mode=TwoWay}"/>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{i18n:Translate Cylinder}"/>
+                                                        <Span Text=" : "/>
+                                                        <Span Text="{Binding Mode=OneWay, Source={x:Reference rightCylinder}, Path=Value, StringFormat='{0:N2}'}"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Slider x:Name="rightCylinder" Maximum="5" Minimum="-5" Value="{Binding RightCylinder, Mode=TwoWay}"/>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{i18n:Translate Axis}"/>
+                                                        <Span Text=" : "/>
+                                                        <Span Text="{Binding Mode=OneWay, Source={x:Reference rightAxis}, Path=Value, StringFormat='{0:N0}'}"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Slider x:Name="rightAxis" Maximum="180" Minimum="0" Value="{Binding RightCylinderAxis, Mode=TwoWay}"/>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{i18n:Translate Addiction}"/>
+                                                        <Span Text=" : "/>
+                                                        <Span Text="{Binding Mode=OneWay, Source={x:Reference rightAddiction}, Path=Value, StringFormat='{0:N2}'}"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Slider x:Name="rightAddiction" Maximum="4.0" Minimum="0.5" Value="{Binding RightAddiction, Mode=TwoWay}"/>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{i18n:Translate BaseCurve}"/>
+                                                        <Span Text=" : "/>
+                                                        <Span Text="{Binding Mode=OneWay, Source={x:Reference rightBaseCurve}, Path=Value, StringFormat='{0:N1}'}"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Slider x:Name="rightBaseCurve" Maximum="12.0" Minimum="0.5" Value="{Binding RightToolRealBase, Mode=TwoWay}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+                <Button Text="{i18n:Translate Compute}" Command="{Binding ComputeLensCommand}" IsEnabled="{Binding ComputeButtonIsEnabled}"/>
+            </StackLayout>
+        </Frame>
+    </abstraction:LoadingContentPage.LoadingContent>
+</abstraction:LoadingContentPage>
