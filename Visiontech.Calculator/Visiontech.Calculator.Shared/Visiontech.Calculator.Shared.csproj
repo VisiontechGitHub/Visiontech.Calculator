@@ -11,9 +11,9 @@
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.60.2" />
     <PackageReference Include="UrhoSharp.Forms" Version="1.8.93" />
     <PackageReference Include="Visiontech.Commons" Version="1.0.19" />
-    <PackageReference Include="Visiontech.Services" Version="1.0.24" />
+    <PackageReference Include="Visiontech.Services" Version="1.0.27" />
     <PackageReference Include="Xamarin.Essentials" Version="0.8.0-preview" />
-    <PackageReference Include="Xamarin.Forms" Version="3.1.0.637273" />
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
     <PackageReference Include="Xamarin.Forms.Extended.InfiniteScrolling" Version="1.0.0-preview2" />
   </ItemGroup>
   <ItemGroup>

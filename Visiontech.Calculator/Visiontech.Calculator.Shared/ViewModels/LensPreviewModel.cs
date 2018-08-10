@@ -19,9 +19,13 @@ namespace CalcolatoreXamarin.Shared.ViewModels
         public enum LensType
         {
             Digit,
+            Punctual,
             Vario,
             Iflex,
+            Iprof,
+            Iprog,
             Magic,
+            Office,
             Fantasy
         }
         public ObservableCollection<double> RefractionIndexes { get; }
@@ -244,6 +248,13 @@ namespace CalcolatoreXamarin.Shared.ViewModels
                         channelSpecified = true
                     };
                     break;
+                case LensType.Punctual:
+                    request = new computePunctualLensRequestDTO()
+                    {
+                        channel = Channel,
+                        channelSpecified = true
+                    };
+                    break;
                 case LensType.Vario:
                     request = new computeVarioLensRequestDTO()
                     {
@@ -266,8 +277,29 @@ namespace CalcolatoreXamarin.Shared.ViewModels
                         channelSpecified = true
                     };
                     break;
+                case LensType.Iprof:
+                    request = new computeIprofLensRequestDTO()
+                    {
+                        near = NearZone,
+                        nearSpecified = true,
+                        channel = Channel,
+                        channelSpecified = true
+                    };
+                    break;
+                case LensType.Iprog:
+                    request = new computeIprogLensRequestDTO()
+                    {
+                        near = NearZone,
+                        nearSpecified = true,
+                        channel = Channel,
+                        channelSpecified = true
+                    };
+                    break;
                 case LensType.Magic:
                     request = new computeMagicLensRequestDTO();
+                    break;
+                case LensType.Office:
+                    request = new computeOfficeLensRequestDTO();
                     break;
                 case LensType.Fantasy:
                     request = new computeFantasyLensRequestDTO();

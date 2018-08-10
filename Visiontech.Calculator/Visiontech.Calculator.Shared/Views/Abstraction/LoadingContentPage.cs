@@ -18,6 +18,7 @@ namespace CalcolatoreXamarin.Shared.Views.Abstraction
         private StackLayout activityLayout;
         private AbsoluteLayout absoluteLayout;
         private ContentView contentView;
+
         public View LoadingContent {
             get {
                 return contentView.Content;
